@@ -8,6 +8,8 @@
     <meta name="description" content="Login or Sign Up">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -36,12 +38,26 @@
                             <div class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
                                 </svg></div>
-                            <form method="post">
-                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                                <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit">Sign up</button></div>
-                                <p class="text-muted">Already have an account?&nbsp;<a href="login.html">Log in</a></p>
+                            <form class="signup">
+                                <div class="mb-3"><input id="fname" class="form-control" type="text" name="firstname" placeholder="First name"></div>
+                                <div class="mb-3"><input id="lname" class="form-control" type="text" name="lastname" placeholder="Last name" ></div>
+                                <div class="mb-3"><input id="email" class="form-control" type="email" name="email" placeholder="Email"></div>
+                                <div class="mb-3"><input id="password" class="form-control" type="password" name="password" placeholder="Password"></div>
+                                <div class="mb-3"><button id="btnSignUp" name="btnSignUp" class="btn btn-primary shadow d-block w-100" type="button" >Sign up</button></div>    
                             </form>
+
+                            <div><p>Or</p></div>
+
+                            <div ><button id="googleSignUp" class="btn btn-outline-dark shadow d-block w-100" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                    width="45" height="40"
+                                    viewBox="0 0 48 48"
+                                    style=" fill:#000000;"><path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path></svg>
+                            Sign Up With Google</button>
+                               </div>
+                               <p class="text-muted"> </p>
+                                <p class="text-muted">Already have an account?&nbsp;<a href="login.html">Log in</a></p>
+                            
                         </div>
                     </div>
                 </div>
@@ -49,9 +65,30 @@
         </div>
     </section>
     <footer class="bg-primary-gradient"></footer>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+            
+            // toggle the icon
+            this.classList.toggle("bi-eye");
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bold-and-bright.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script type="module" src="signup.js"></script>
 </body>
 
 </html>
